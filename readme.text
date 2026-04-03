@@ -1,0 +1,25 @@
+←[1mToken:←[0m apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA
+←[1mHTTP Requests Header:←[0m Authorization: Bearer apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA
+
+←[1m←[31mIMPORTANT:←[39m←[0m Store this token securely, as it will not be shown again.
+
+
+
+run server ?
+
+influxdb3 serve --node-id host01 --cluster-id cluster01 --object-store file --data-dir C:\influxdb-data
+
+influxdb3 serve --node-id host01 --object-store file --data-dir ./influx_data
+ 
+
+influxdb3 create database flood-db --token apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA
+
+
+influxdb3 show databases --token apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA
+
+influxdb3 write --database flood-db --token apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA --precision ns "weather,location=LA temperature=20.5,humidity=75 123456789"
+
+influxdb3 query --host http://localhost:8181 --database flood-db --token apiv3_ONtyDo8EkTsWPzu_29gCI2Bb9v5aIzN_r1IspHZmo0GlgiE-nMaNTNbbtFaYoqVgilJ0qFpxp0FpFv64laH_oA "SELECT * FROM weather ORDER BY time"
+ 
+ 
+ 
